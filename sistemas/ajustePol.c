@@ -4,6 +4,7 @@
 #include <fenv.h>
 #include <math.h>
 #include <stdint.h>
+#include <likwid.h>
 
 #include "linear.h"
 #include "utils.h"
@@ -37,7 +38,7 @@ double Pol(double x, int G, double *alpha) {
 }
 
 int main() {
-
+  LIKWID_MARKER_INIT;
   int G, g; // G -> grau do polinomio
   long long int P, p; // P -> no. de pontos
 
@@ -61,12 +62,16 @@ int main() {
   
   // (A) Gera SL
   double tSL = timestamp();
+  LIKWID_MARKER_START ("MONTA SL");
   montaSL(A, b, g, p, x, y);
+  LIKWID_MARKER_STOP ("MONTA SL");
   tSL = timestamp() - tSL;
 
   // (B) Resolve SL
   double tEG = timestamp();
+  LIKWID_MARKER_START ("RESOLVE");
   resolveSL(A, b, alpha, g);
+  LIKWID_MARKER_STOP ("RESOLVE");
   tEG = timestamp() - tEG;
 
   // Imprime coeficientes
@@ -81,6 +86,6 @@ int main() {
 
   // Imprime os tempos
   printf("%lld %1.10e %1.10e\n", P, tSL, tEG);
-
+  LIKWID_MARKER_CLOSE;
   return 0;
 }

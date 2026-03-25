@@ -48,12 +48,11 @@ void resolveSL(double **A, double *b, double *x, int n) {
 
 void inversa (double **A, double **LU, int n){
     for (int i = 0; i < n; ++i) {
-         
         for (int k = i+1; k < n; ++k) {
             double m = A[k][i] / A[i][i];
-            L[i][k] = 0;
-            L[k][i] = m;
-            
+            LU[k][i] = m;
+            for (int j = i+1; j < n; ++j)
+	            A[k][j] -= A[i][j]*m;
         }
     }
 }

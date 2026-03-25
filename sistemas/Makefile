@@ -2,17 +2,17 @@
     PROGS = ajustePol gera_entrada
     OBJS = utils.o linear.o
 
-       LIKWID = /home/soft/likwid
- LIKWID_FLAGS = -I$(LIKWID)/include
-  LIKWID_LIBS = -L$(LIKWID)/lib
+    LIKWID = /home/soft/likwid
+ 	LIKWID_FLAGS = -I$(LIKWID)/include
+  	LIKWID_LIBS = -L$(LIKWID)/lib
 
     AVX_FLAGS = -mavx2 -march=native -fopt-info-vec
 
 # Compilador
-#    CC     = gcc -O3 $(AVX_FLAGS) -Wno-unused-result 
+	CC = gcc -O3 $(AVX_FLAGS) -Wno-unused-result 
     CC = gcc -Wno-unused-result
-    #CFLAGS = -DLIKWID_PERFMON $(LIKWID_FLAGS) 
-    #LFLAGS = $(LIKWID_LIBS) -llikwid -lm
+    CFLAGS = -DLIKWID_PERFMON $(LIKWID_FLAGS) 
+    LFLAGS = $(LIKWID_LIBS) -llikwid -lm
     LFLAGS = -lm
 
 # Lista de arquivos para distribuição.
