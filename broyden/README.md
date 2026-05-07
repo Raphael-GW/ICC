@@ -27,7 +27,7 @@ Atualiza-se a matriz $J(X^{(k)})$ calculando os termos da diagonal principal e m
 ### Passo 3: Resolução do Sistema Linear
 Resolve-se o sistema linear para encontrar o passo de correção $\Delta^{(k)}$:
 $$J(X^{(k)}) \Delta^{(k)} = -F(X^{(k)})$$
-*Dica: Como $J$ é tridiagonal, utiliza-se o **Algoritmo de Thomas** para obter complexidade $$O(n)$$.*
+*Dica: Como J é tridiagonal, utiliza-se o **Algoritmo de Thomas** para obter complexidade O(n).*
 
 ### Passo 4: Atualização do Vetor de Solução
 Atualiza-se o palpite da raiz:
