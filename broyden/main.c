@@ -10,10 +10,10 @@ int main() {
     double *x       = (double *) malloc(n * sizeof(double)); // vetor com as variáveis x
     double *f       = (double *) malloc(n * sizeof(double)); // vetor com cada resultado de f(x)
     double *menos_f = (double *) malloc(n * sizeof(double)); // -F(X)
-    double *s       = (double *) malloc(n * sizeof(double)); //
-    double *a       = (double *) malloc(n * sizeof(double));
-    double *b       = (double *) malloc(n * sizeof(double));
-    double *c       = (double *) malloc(n * sizeof(double));
+    double *s       = (double *) malloc(n * sizeof(double)); // delta usado para atualizar x (i+1)
+    double *a       = (double *) malloc(n * sizeof(double)); // subdiagonal
+    double *b       = (double *) malloc(n * sizeof(double)); // diagonal principal
+    double *c       = (double *) malloc(n * sizeof(double)); //
 
     /* chute inicial classico: todos -1 */
     for (int i = 0; i < n; i++) x[i] = -1.0;
