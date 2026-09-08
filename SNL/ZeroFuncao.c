@@ -7,37 +7,38 @@
 // Retorna valor do erro quando método finalizou. Este valor depende de tipoErro
 real_t newtonRaphson (Polinomio p, real_t x0, int criterioParada, int *it, real_t *raiz)
 {
-	int para, i = 0;
+	int para = 0;
+	int itera = 0;
 	real_t err;
-	real_t px, pdx;
+	real_t px, dpx;
 	real_t x_new;
 
-	while (i < MAXIT && !para){
-		if (criterioParada == 1){
-                        para = fabs (
-                }
-                else if (criterioParada == 2){
-
-                }
-                else{
-
-                }
-
-		calcPolinomio (p, x0, &px, &pdx);
-		x_new = x0 - px / pdx;
+	while (itera < MAXIT && !para){
+		calcPolinomio_lento (p, x0, &px, &dpx);
+		x_new = x0 - px / dpx;
 
 		err = fabs ((x_new - x0) / x_new) * 100;
 		if (err < EPS){
 			*raiz = x_new;
 			para = 1;
 		}
-		i++;
+
+		itera++;
+		if (criterioParada == 1){
+                        para = fabs ((x_new - x0) / x_new) <= 10e-7;
+                }
+                else if (criterioParada == 2){
+			calcPolinomio_lento (p, x_new, &px, &dpx);
+			para = fabs (px) <= DBL_EPSILON;
+                }
+		px = 0;
+		dpx = 0;
+
 	}
-	*it = i;
+	*it = itera;
 
 	return err;
 }
-
 
 // Retorna valor do erro quando método finalizou. Este valor depende de tipoErro
 real_t bisseccao (Polinomio p, real_t a, real_t b, int criterioParada, int *it, real_t *raiz)
@@ -49,16 +50,6 @@ real_t bisseccao (Polinomio p, real_t a, real_t b, int criterioParada, int *it, 
 	real_t px_a, px_xm, dpx;
 
 	while (i < MAXIT && !para){
-		// Checa se o criterio de parada foi atendido
-		if (criterioParada == 1){
-			para = fabs (
-		}
-		else if (criterioParada == 2){
-
-		}
-		else{
-
-		}
 		
 		calcPolinomio_lento (p, a, &px_a, &dpx);
 		calcPolinomio_lento (p, xm, &px_xm, &dpx);
@@ -66,7 +57,7 @@ real_t bisseccao (Polinomio p, real_t a, real_t b, int criterioParada, int *it, 
 		if (px_a * px_xm < 0){
 			b = xm;
 		}
-		else if (px_a * px_m > 0){
+		else if (px_a * px_xm > 0){
 			a = xm;
 		}
 		else{
@@ -82,6 +73,21 @@ real_t bisseccao (Polinomio p, real_t a, real_t b, int criterioParada, int *it, 
 			para = 1;
 		}
 		i++;
+
+		if (criterioParada == 1){
+                        para = fabs ((xm_new - xm) / xm_new) <= 10e-7;
+                }
+                else if (criterioParada == 2){
+                        calcPolinomio_lento (p, xm_new, &px_xm, &dpx);
+                        para = fabs (px_xm) <= DBL_EPSILON;
+                }
+                else{
+                        printf ("erro!\n");
+                }
+
+		px_a = 0;
+		px_xm = 0;
+
 	}
 	*it = i;
 
@@ -91,17 +97,15 @@ real_t bisseccao (Polinomio p, real_t a, real_t b, int criterioParada, int *it, 
 
 void calcPolinomio_rapido(Polinomio p, real_t x, real_t *px, real_t *dpx)
 {
-	for (int i = 0; i < p.grau; ++i){
-		
-	}
+	return ;
 }
 
 
 void calcPolinomio_lento(Polinomio p, real_t x, real_t *px, real_t *dpx)
 {
-	real_t *p = p.p;
+	real_t *poli = p.p;
 	for (int i = p.grau; i >= 0; --i){
-		*px += p[i] * pow (x,i);
-		*dpx += p[i]*i * pow (x,i-1);
+		*px += poli[i] * pow (x,i);
+		*dpx += poli[i]*i * pow (x,i-1);
 	}	
 }
