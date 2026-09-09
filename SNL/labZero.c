@@ -9,15 +9,16 @@ int main ()
 {
 
   real_t a, b, err;
-  Polinomio pol;
+  Polinomio* pol = malloc (sizeof (Polinomio));
   rtime_t Tnewton, Tbissec;
   double raiz;
   int it;
 
-  scanf("%d", &pol.grau);
+  scanf("%d", &pol->grau);
+  pol->p = malloc (sizeof (real_t)*pol->grau);
 
-  for (int i=pol.grau; i >=0; --i)
-    scanf("%lf", &pol.p[i]);
+  for (int i=pol->grau; i <=0; --i)
+    scanf("%lf", &pol->p[i]);
 
   scanf("%lf %lf", &a, &b); // intervalo onde está uma das raizes.
   
@@ -37,7 +38,9 @@ int main ()
 
   printf ("Newton    ");
   printf ("%.15e  %.15e  %d  %.8e\n", raiz, err, it, Tnewton);
-
+  
+  free (pol->p);
+  free (pol);
   return 0;
 }
 

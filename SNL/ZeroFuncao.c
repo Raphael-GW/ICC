@@ -5,7 +5,7 @@
 #include "ZeroFuncao.h"
 
 // Retorna valor do erro quando método finalizou. Este valor depende de tipoErro
-real_t newtonRaphson (Polinomio p, real_t x0, int criterioParada, int *it, real_t *raiz)
+real_t newtonRaphson (Polinomio* p, real_t x0, int criterioParada, int *it, real_t *raiz)
 {
 	int para = 0;
 	int itera = 0;
@@ -19,18 +19,22 @@ real_t newtonRaphson (Polinomio p, real_t x0, int criterioParada, int *it, real_
 
 		err = fabs ((x_new - x0) / x_new) * 100;
 		if (err < EPS){
-			*raiz = x_new;
 			para = 1;
 		}
 
-		itera++;
 		if (criterioParada == 1){
-                        para = fabs ((x_new - x0) / x_new) <= 10e-7;
+                        if (fabs ((x_new - x0) / x_new) <= 10e-7)
+				para = 1;
                 }
                 else if (criterioParada == 2){
 			calcPolinomio_lento (p, x_new, &px, &dpx);
-			para = fabs (px) <= DBL_EPSILON;
+			if (fabs (px) <= DBL_EPSILON)
+				para = 1;
                 }
+		
+		*raiz = x_new;
+		x0 = x_new;
+		itera++;
 		px = 0;
 		dpx = 0;
 
@@ -41,7 +45,7 @@ real_t newtonRaphson (Polinomio p, real_t x0, int criterioParada, int *it, real_
 }
 
 // Retorna valor do erro quando método finalizou. Este valor depende de tipoErro
-real_t bisseccao (Polinomio p, real_t a, real_t b, int criterioParada, int *it, real_t *raiz)
+real_t bisseccao (Polinomio* p, real_t a, real_t b, int criterioParada, int *it, real_t *raiz)
 {
 	int para, i = 0;
 	real_t err;
@@ -101,10 +105,10 @@ void calcPolinomio_rapido(Polinomio p, real_t x, real_t *px, real_t *dpx)
 }
 
 
-void calcPolinomio_lento(Polinomio p, real_t x, real_t *px, real_t *dpx)
+void calcPolinomio_lento(Polinomio* p, real_t x, real_t *px, real_t *dpx)
 {
-	real_t *poli = p.p;
-	for (int i = p.grau; i >= 0; --i){
+	real_t *poli = p->p;
+	for (int i = p->grau; i >= 0; --i){
 		*px += poli[i] * pow (x,i);
 		*dpx += poli[i]*i * pow (x,i-1);
 	}	
