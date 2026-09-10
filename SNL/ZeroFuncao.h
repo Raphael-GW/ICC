@@ -23,7 +23,7 @@ real_t newtonRaphson (Polinomio* p, real_t x0, int criterioParada, int *it, real
 real_t bisseccao (Polinomio* p, real_t a, real_t b, int criterioParada, int *it, real_t *raiz);
 
 // Cálculo de Polinômios
-void calcPolinomio_rapido(Polinomio p, real_t x, real_t *px, real_t *dpx );
+void calcPolinomio_rapido(Polinomio* p, real_t x, real_t *px, real_t *dpx );
 void calcPolinomio_lento(Polinomio* p, real_t x, real_t *px, real_t *dpx );
 
 #endif // __ZEROFUNCAO_H__

@@ -14,7 +14,7 @@ real_t newtonRaphson (Polinomio* p, real_t x0, int criterioParada, int *it, real
 	real_t x_new;
 
 	while (itera < MAXIT && !para){
-		calcPolinomio_lento (p, x0, &px, &dpx);
+		calcPolinomio_rapido (p, x0, &px, &dpx);
 		x_new = x0 - px / dpx;
 
 		err = fabs ((x_new - x0) / x_new) * 100;
@@ -27,19 +27,15 @@ real_t newtonRaphson (Polinomio* p, real_t x0, int criterioParada, int *it, real
 				para = 1;
                 }
                 else if (criterioParada == 2){
-			calcPolinomio_lento (p, x_new, &px, &dpx);
+			calcPolinomio_rapido (p, x_new, &px, &dpx);
 			if (fabs (px) <= DBL_EPSILON)
 				para = 1;
                 }
-		
-		*raiz = x_new;
 		x0 = x_new;
 		itera++;
-		px = 0;
-		dpx = 0;
-
 	}
 	*it = itera;
+	*raiz = x0;
 
 	return err;
 }
@@ -47,7 +43,7 @@ real_t newtonRaphson (Polinomio* p, real_t x0, int criterioParada, int *it, real
 // Retorna valor do erro quando método finalizou. Este valor depende de tipoErro
 real_t bisseccao (Polinomio* p, real_t a, real_t b, int criterioParada, int *it, real_t *raiz)
 {
-	int para, i = 0;
+	int para = 0, i = 0;
 	real_t err;
 	real_t xm = (a + b) / 2;
 	real_t xm_new;
@@ -88,10 +84,7 @@ real_t bisseccao (Polinomio* p, real_t a, real_t b, int criterioParada, int *it,
                 else{
                         printf ("erro!\n");
                 }
-
-		px_a = 0;
-		px_xm = 0;
-
+		xm = xm_new;
 	}
 	*it = i;
 
@@ -99,14 +92,22 @@ real_t bisseccao (Polinomio* p, real_t a, real_t b, int criterioParada, int *it,
 }
 
 
-void calcPolinomio_rapido(Polinomio p, real_t x, real_t *px, real_t *dpx)
+void calcPolinomio_rapido(Polinomio* p, real_t x, real_t *px, real_t *dpx)
 {
-	return ;
+	*px = p->p[p->grau];
+	*dpx = 0.0;
+
+	for (int i = p->grau - 1; i >= 0; --i){
+		*dpx = *dpx * x + *px;
+		*px = *px * x + p->p[i];
+	}
 }
 
 
 void calcPolinomio_lento(Polinomio* p, real_t x, real_t *px, real_t *dpx)
 {
+	*px = 0.0; 
+	*dpx = 0.0;
 	real_t *poli = p->p;
 	for (int i = p->grau; i >= 0; --i){
 		*px += poli[i] * pow (x,i);
