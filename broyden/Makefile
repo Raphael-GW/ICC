@@ -1,4 +1,4 @@
-# Adicionado -g para incluir símbolos de depuração, essencial para o Valgrind
+	# Adicionado -g para incluir símbolos de depuração, essencial para o Valgrind
 parametrosCompilacao=-Wall -g -lm
 nomePrograma=broyden
 
