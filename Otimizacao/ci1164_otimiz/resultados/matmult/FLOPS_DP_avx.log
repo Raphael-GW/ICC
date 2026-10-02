@@ -1,0 +1,210 @@
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.499923893 GHz,
+TABLE,Region MAT_VET,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.000088,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,563745
+CPU_CLOCKS_UNHALTED,PMC1,366207
+RETIRED_UOPS,PMC2,557624
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,32783
+TABLE,Region MAT_VET,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0001,
+Runtime unhalted [s],0.0001,
+DP [MFLOP/s],371.7315,
+CPI,0.6496,
+CPI (based on uops),0.6567,
+IPC,1.5394,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.499923893 GHz,
+TABLE,Region MAT_MAT,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.018761,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,96621760
+CPU_CLOCKS_UNHALTED,PMC1,70181810
+RETIRED_UOPS,PMC2,96599420
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,4194319
+TABLE,Region MAT_MAT,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0188,
+Runtime unhalted [s],0.0201,
+DP [MFLOP/s],223.5608,
+CPI,0.7264,
+CPI (based on uops),0.7265,
+IPC,1.3767,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.500183435 GHz,
+TABLE,Region MAT_VET,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.000206,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,1367337
+CPU_CLOCKS_UNHALTED,PMC1,814182
+RETIRED_UOPS,PMC2,1349326
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,80015
+TABLE,Region MAT_VET,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0002,
+Runtime unhalted [s],0.0002,
+DP [MFLOP/s],388.4052,
+CPI,0.5955,
+CPI (based on uops),0.6034,
+IPC,1.6794,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.500183435 GHz,
+TABLE,Region MAT_MAT,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.071731,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,368366100
+CPU_CLOCKS_UNHALTED,PMC1,276851200
+RETIRED_UOPS,PMC2,368319600
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,16000020
+TABLE,Region MAT_MAT,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0717,
+Runtime unhalted [s],0.0791,
+DP [MFLOP/s],223.0573,
+CPI,0.7516,
+CPI (based on uops),0.7517,
+IPC,1.3306,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.50017214 GHz,
+TABLE,Region MAT_VET,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.000427,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,3068237
+CPU_CLOCKS_UNHALTED,PMC1,1784247
+RETIRED_UOPS,PMC2,3024824
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,180015
+TABLE,Region MAT_VET,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0004,
+Runtime unhalted [s],0.0005,
+DP [MFLOP/s],421.2401,
+CPI,0.5815,
+CPI (based on uops),0.5899,
+IPC,1.7196,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.50017214 GHz,
+TABLE,Region MAT_MAT,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.257201,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,1242817000
+CPU_CLOCKS_UNHALTED,PMC1,1049589000
+RETIRED_UOPS,PMC2,1242688000
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,54000020
+TABLE,Region MAT_MAT,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.2572,
+Runtime unhalted [s],0.2999,
+DP [MFLOP/s],209.9528,
+CPI,0.8445,
+CPI (based on uops),0.8446,
+IPC,1.1841,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.500184646 GHz,
+TABLE,Region MAT_MAT,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],1.684217,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,6176385000
+CPU_CLOCKS_UNHALTED,PMC1,6747466000
+RETIRED_UOPS,PMC2,6176124000
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,268435500
+TABLE,Region MAT_MAT,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],1.6842,
+Runtime unhalted [s],1.9277,
+DP [MFLOP/s],159.3830,
+CPI,1.0925,
+CPI (based on uops),1.0925,
+IPC,0.9154,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.500184646 GHz,
+TABLE,Region MAT_VET,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.001243,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,8923042
+CPU_CLOCKS_UNHALTED,PMC1,5124852
+RETIRED_UOPS,PMC2,8792867
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,524303
+TABLE,Region MAT_VET,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0012,
+Runtime unhalted [s],0.0015,
+DP [MFLOP/s],421.8639,
+CPI,0.5743,
+CPI (based on uops),0.5828,
+IPC,1.7411,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.500178412 GHz,
+TABLE,Region MAT_VET,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],0.004833,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,35666340
+CPU_CLOCKS_UNHALTED,PMC1,19728080
+RETIRED_UOPS,PMC2,35138550
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,2097167
+TABLE,Region MAT_VET,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],0.0048,
+Runtime unhalted [s],0.0056,
+DP [MFLOP/s],433.9652,
+CPI,0.5531,
+CPI (based on uops),0.5614,
+IPC,1.8079,
+STRUCT,Info,3
+CPU name:,AMD FX(tm)-6300 Six-Core Processor             ,
+CPU type:,AMD Interlagos processor,
+CPU clock:,3.500178412 GHz,
+TABLE,Region MAT_MAT,Group 1 Raw,FLOPS_DP,4
+Region Info,HWThread 3,
+RDTSC Runtime [s],18.018940,
+call count,1,
+Event,Counter,HWThread 3
+RETIRED_INSTRUCTIONS,PMC0,49401580000
+CPU_CLOCKS_UNHALTED,PMC1,73414410000
+RETIRED_UOPS,PMC2,49400650000
+RETIRED_FLOPS_DOUBLE_ALL,PMC3,2147484000
+TABLE,Region MAT_MAT,Group 1 Metric,FLOPS_DP,6
+Metric,HWThread 3,
+Runtime (RDTSC) [s],18.0189,
+Runtime unhalted [s],20.9745,
+DP [MFLOP/s],119.1793,
+CPI,1.4861,
+CPI (based on uops),1.4861,
+IPC,0.6729,
