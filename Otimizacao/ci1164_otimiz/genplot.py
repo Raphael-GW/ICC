@@ -32,9 +32,9 @@ import re, sys, os
 #  "FLOPS_AVX" : "AVX DP \[*MFLOP/s\]*",
 
 campos = { "L3CACHE" : "L3 miss ratio",
-           "FLOPS_DP" : "DP \[*MFLOP/s\]*",
-           "FLOPS_AVX" : "AVX DP \[*MFLOP/s\]*",
-           "ENERGY" : "Energy \[*J\]*"
+           "FLOPS_DP" : "DP .*MFLOP/s.*",
+           "FLOPS_AVX" : "Packed DP .*MFLOP/s.*",
+           "ENERGY" : "Energy .*J.*"
          }
 
 # 'STRUCT,Info' inicia Região

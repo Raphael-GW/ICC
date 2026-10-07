@@ -110,13 +110,35 @@ void liberaVetor (void *vet)
 
 void multMatVet (MatRow mat, Vetor v, int m, int n, Vetor res)
 {
-    
-  /* Efetua a multiplicação */
-  if (res) {
-    for (int i=0; i < m; ++i)
-      for (int j=0; j < n; ++j)
-        res[i] += mat[n*i + j] * v[j];
-  }
+ 
+   /* Efetua a multiplicação */
+   if (res) {
+     for (int i=0; i < m; ++i)
+       for (int j=0; j < n; ++j)
+         res[i] += mat[n*i + j] * v[j];
+   }
+}
+
+
+void MatVet_Otim (MatRow mat, Vetor v, int m, int n, Vetor res)
+{
+
+   /* Efetua a multiplicação */
+   if (res) {
+     for (int i=0; i < m-m%4; i+=4){
+       for (int j=0; j < n; ++j){
+         res[i] += mat[n*i + j] * v[j];
+	 res[i+1] += mat[n*(i+1) + j] * v[j];
+	 res[i+2] += mat[n*(i+2) + j] * v[j];
+	 res[i+3] += mat[n*(i+3) + j] * v[j];
+       }
+     }
+
+     for (int i = m%4; i < m; ++i){
+     	for (int j = 0; j < n; ++j)
+		res[i] += mat[n*i + j] * v[j];
+     }
+   }
 }
 
 
@@ -130,14 +152,39 @@ void multMatVet (MatRow mat, Vetor v, int m, int n, Vetor res)
  *
  */
 
+
 void multMatMat (MatRow A, MatRow B, int n, MatRow C)
 {
-
   /* Efetua a multiplicação */
   for (int i=0; i < n; ++i)
     for (int j=0; j < n; ++j)
       for (int k=0; k < n; ++k)
+        C[i*n+j] += A[i*n+k] * B[k*n+j];
+}
+
+
+void MatMat_Otim (MatRow A, MatRow B, int n, MatRow C)
+{
+
+  /* Efetua a multiplicação */
+  for (int i=0; i < n-n%4; i+=4){
+    for (int j=0; j < n; ++j){
+      for (int k=0; k < n; ++k){
 	C[i*n+j] += A[i*n+k] * B[k*n+j];
+      	C[(i+1)*n+j] += A[(i+1)*n+k] * B[k*n+j];
+	C[(i+2)*n+j] += A[(i+2)*n+k] * B[k*n+j];
+	C[(i+3)*n+j] += A[(i+3)*n+k] * B[k*n+j];
+      }
+    }
+  }
+
+  for (int i=n%4; i < n; ++i){
+     for (int j=0; j < n; ++j){
+       for (int k=0; k < n; ++k){
+         C[i*n+j] += A[i*n+k] * B[k*n+j];
+       }
+     }
+   }
 }
 
 

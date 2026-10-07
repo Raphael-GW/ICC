@@ -70,25 +70,56 @@ int main (int argc, char *argv[])
     prnVetor (vet, n);
     printf ("=================================\n\n");
 #endif /* _DEBUG_ */
-  rtime_t matVet_time, matMat_time;
+  rtime_t matVet_time, matMat_time, matVetOt_time, matMatOt_time;
+  string_t marker;
   LIKWID_MARKER_INIT;
 
-  LIKWID_MARKER_START ("MAT_VET");
+  // Multiplicação SEM Otimizações
+
+  marker = markerName ("MatVet", n);
+  LIKWID_MARKER_START (marker);
 
   matVet_time = timestamp();
   multMatVet (mRow_1, vet, n, n, res);
   matVet_time = timestamp() - matVet_time;
 
-  LIKWID_MARKER_STOP ("MAT_VET");
+  LIKWID_MARKER_STOP (marker);
+  free (marker);
     
 
-  LIKWID_MARKER_START ("MAT_MAT");
+  marker = markerName ("MatMat", n);
+  LIKWID_MARKER_START (marker);
 
   matMat_time = timestamp ();
   multMatMat (mRow_1, mRow_2, n, resMat);
   matMat_time = timestamp () - matMat_time;
 
-  LIKWID_MARKER_STOP ("MAT_MAT");
+  LIKWID_MARKER_STOP (marker);
+  free(marker);
+
+  // Multiplicação COM Otimizações
+
+
+  marker = markerName ("MatVet_Otim", n);
+  LIKWID_MARKER_START (marker);
+
+  matVetOt_time = timestamp();
+  MatVet_Otim (mRow_1, vet, n, n, res);
+  matVetOt_time = timestamp() - matVetOt_time;
+
+  LIKWID_MARKER_STOP (marker);
+  free (marker);
+
+
+  marker = markerName("MatMat_Otim", n);
+  LIKWID_MARKER_START (marker);
+
+  matMatOt_time = timestamp ();
+  MatMat_Otim (mRow_1, mRow_2, n, resMat);
+  matMatOt_time = timestamp () - matMatOt_time;
+
+  LIKWID_MARKER_STOP (marker);
+  free (marker);
   
   LIKWID_MARKER_CLOSE;
 #ifdef _DEBUG_
@@ -96,6 +127,8 @@ int main (int argc, char *argv[])
     prnMat (resMat, n, n);
     printf ("TEMPO MATVET:   %.6f\n", matVet_time);
     printf ("TEMPO MATMAT:   %.6f\n", matMat_time);
+    printf ("TEMPO MATVET_OTIM:   %.6f\n", matVetOt_time);
+    printf ("TEMPO MATMAT_OTIM:   %.6f\n", matMatOt_time);
 #endif /* _DEBUG_ */
 
   liberaVetor ((void*) mRow_1);
@@ -105,5 +138,6 @@ int main (int argc, char *argv[])
   liberaVetor ((void*) res);
 
   return 0;
+
 }
 

@@ -21,11 +21,11 @@ set ylabel  "Tempo (ms)"
 set title   "Tempo"
 set terminal qt 0 title "Tempos"
 plot ARQ using 1:2 title "MatVet" lc rgb "green" with linespoints, \
-     '' using 1:3 title "MatVet-uj" lc rgb "red" with linespoints, \
+     '' using 1:3 title "MatVet-otmiz" lc rgb "red" with linespoints, \
      '' using 1:4 title "MatMat" lc rgb "magenta" with linespoints, \
-     '' using 1:5 title "MatMat-uj" lc rgb "cyan" with linespoints
+     '' using 1:5 title "MatMat-otimiz" lc rgb "cyan" with linespoints
 
-pause -1
+# pause -1
 
 ## set datafile separator {whitespace | tab | comma | "<chars>"}
 set datafile separator comma
@@ -33,48 +33,64 @@ set datafile separator comma
 #
 # FLOPS_DP
 #
-ARQ=ARG1."/FLOPS_DP.csv"
+ARQ=ARG1."/FLOPS_DP_".ARG2.".csv"
 set key right top
 unset logscale y
 set ylabel  "FLOPS DP [MFlops/s]"
 set title   "FLOPS DP"
 set terminal qt 1 title "FLOPS DP"
 plot ARQ using 1:2 title "MatVet" lc rgb "green" with linespoints, \
-     '' using 1:3 title "MatVet-uj" lc rgb "red" with linespoints, \
+     '' using 1:3 title "MatVet-otimiz" lc rgb "red" with linespoints, \
      '' using 1:4 title "MatMat" lc rgb "magenta" with linespoints, \
-     '' using 1:5 title "MatMat-uj" lc rgb "cyan" with linespoints
+     '' using 1:5 title "MatMat-otimiz" lc rgb "cyan" with linespoints
 
-pause -1
+# pause -1
+
+#
+# FLOPS_AVX
+#
+ARQ=ARG1."/FLOPS_AVX_".ARG2.".csv"
+set key right top
+unset logscale y
+set ylabel  "FLOPS AVX [MFlops/s]"
+set title   "FLOPS AVX"
+set terminal qt 4 title "FLOPS AVX"
+plot ARQ using 1:2 title "MatVet" lc rgb "green" with linespoints, \
+     '' using 1:3 title "MatVet-otimiz" lc rgb "red" with linespoints, \
+     '' using 1:4 title "MatMat" lc rgb "magenta" with linespoints, \
+     '' using 1:5 title "MatMat-otimiz" lc rgb "cyan" with linespoints
+
+# pause -1
 
 #
 # ENERGY
 #
-ARQ=ARG1."/ENERGY.csv"
+ARQ=ARG1."/ENERGY_".ARG2.".csv"
 set key center top
 unset logscale y
 set ylabel  "Energia [J]"
 set title   "Energia"
 set terminal qt 2 title "Energia"
 plot ARQ using 1:2 title "MatVet" lc rgb "green" with linespoints, \
-     '' using 1:3 title "MatVet-uj" lc rgb "red" with linespoints, \
+     '' using 1:3 title "MatVet-otimiz" lc rgb "red" with linespoints, \
      '' using 1:4 title "MatMat" lc rgb "magenta" with linespoints, \
-     '' using 1:5 title "MatMat-uj" lc rgb "cyan" with linespoints
+     '' using 1:5 title "MatMat-otimiz" lc rgb "cyan" with linespoints
 
-pause -1
+# pause -1
 
 #
 # L3CACHE
 #
-ARQ=ARG1."/L3CACHE.csv"
+ARQ=ARG1."/L3CACHE_".ARG2.".csv"
 set key left top
 unset logscale y
 set ylabel  "L3 miss ratio"
 set title   "L3 miss ratio"
 set terminal qt 3 title "L3 miss ratio"
 plot ARQ using 1:2 title "MatVet" lc rgb "green" with linespoints, \
-     '' using 1:3 title "MatVet-uj" lc rgb "red" with linespoints, \
+     '' using 1:3 title "MatVet-otimiz" lc rgb "red" with linespoints, \
      '' using 1:4 title "MatMat" lc rgb "magenta" with linespoints, \
-     '' using 1:5 title "MatMat-uj" lc rgb "cyan" with linespoints
+     '' using 1:5 title "MatMat-otimiz" lc rgb "cyan" with linespoints
 
 pause -1
 

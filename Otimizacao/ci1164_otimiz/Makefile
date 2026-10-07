@@ -5,7 +5,7 @@
 # Compilador
            CC = gcc
 
-       CFLAGS = -DLIKWID_PERFMON -I /home/soft/likwid/include
+       CFLAGS = -O3 -mavx2 -march=native -DLIKWID_PERFMON -I /home/soft/likwid/include
        LFLAGS = -L /home/soft/likwid/lib -llikwid -lm
 
 # Lista de arquivos para distribuição
@@ -17,7 +17,7 @@ DISTDIR = ${USER}
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
 
-all: $(PROG)
+avx: $(PROG)
 
 debug:         CFLAGS += -g -D_DEBUG_
 debug:         $(PROG)
