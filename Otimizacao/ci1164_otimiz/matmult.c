@@ -70,7 +70,8 @@ int main (int argc, char *argv[])
     prnVetor (vet, n);
     printf ("=================================\n\n");
 #endif /* _DEBUG_ */
-  rtime_t matVet_time, matMat_time, matVetOt_time, matMatOt_time;
+  rtime_t matVet_time, matMat_time, matVetOt_time, matMatOt_time, 
+  	matMatRes_time;
   string_t marker;
   LIKWID_MARKER_INIT;
 
@@ -121,14 +122,27 @@ int main (int argc, char *argv[])
   LIKWID_MARKER_STOP (marker);
   free (marker);
   
+
+  marker = markerName("MatMat_restrict", n);
+  LIKWID_MARKER_START (marker);
+
+  matMatRes_time = timestamp ();
+  MatMat_restrict (mRow_1, mRow_2, n, resMat);
+  matMatRes_time = timestamp () - matMatRes_time;
+
+  LIKWID_MARKER_STOP (marker);
+  free (marker);
+  
+
   LIKWID_MARKER_CLOSE;
+
+  printf ("%.6f   %.6f   %.6f   %.6f   %.6f",matVet_time, matMat_time,
+  	matVetOt_time, matMatOt_time, matMatRes_time);
+  
 #ifdef _DEBUG_
     prnVetor (res, n);
     prnMat (resMat, n, n);
-    printf ("TEMPO MATVET:   %.6f\n", matVet_time);
-    printf ("TEMPO MATMAT:   %.6f\n", matMat_time);
-    printf ("TEMPO MATVET_OTIM:   %.6f\n", matVetOt_time);
-    printf ("TEMPO MATMAT_OTIM:   %.6f\n", matMatOt_time);
+
 #endif /* _DEBUG_ */
 
   liberaVetor ((void*) mRow_1);

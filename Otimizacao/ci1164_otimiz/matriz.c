@@ -134,7 +134,7 @@ void MatVet_Otim (MatRow mat, Vetor v, int m, int n, Vetor res)
        }
      }
 
-     for (int i = m%4; i < m; ++i){
+     for (int i = m-m%4; i < m; ++i){
      	for (int j = 0; j < n; ++j)
 		res[i] += mat[n*i + j] * v[j];
      }
@@ -178,7 +178,7 @@ void MatMat_Otim (MatRow A, MatRow B, int n, MatRow C)
     }
   }
 
-  for (int i=n%4; i < n; ++i){
+  for (int i=n-n%4; i < n; ++i){
      for (int j=0; j < n; ++j){
        for (int k=0; k < n; ++k){
          C[i*n+j] += A[i*n+k] * B[k*n+j];
@@ -186,6 +186,36 @@ void MatMat_Otim (MatRow A, MatRow B, int n, MatRow C)
      }
    }
 }
+
+void MatMat_restrict (MatRow restrict A, MatRow restrict B, int n, MatRow restrict C)
+{
+
+  /* Efetua a multiplicação */
+  for (int i=0; i < n-n%8; i+=8){
+    for (int j=0; j < n; ++j){
+      for (int k=0; k < n; ++k){
+	C[i*n+j] += A[i*n+k] * B[k*n+j];
+      	C[(i+1)*n+j] += A[(i+1)*n+k] * B[k*n+j];
+	C[(i+2)*n+j] += A[(i+2)*n+k] * B[k*n+j];
+	C[(i+3)*n+j] += A[(i+3)*n+k] * B[k*n+j];
+
+	C[(i+4)*n+j] += A[(i+4)*n+k] * B[k*n+j];
+      	C[(i+5)*n+j] += A[(i+5)*n+k] * B[k*n+j];
+	C[(i+6)*n+j] += A[(i+6)*n+k] * B[k*n+j];
+	C[(i+7)*n+j] += A[(i+7)*n+k] * B[k*n+j];
+      }
+    }
+  }
+
+  for (int i=n-n%8; i < n; ++i){
+     for (int j=0; j < n; ++j){
+       for (int k=0; k < n; ++k){
+         C[i*n+j] += A[i*n+k] * B[k*n+j];
+       }
+     }
+   }
+}
+
 
 
 /**

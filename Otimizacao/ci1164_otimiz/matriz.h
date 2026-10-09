@@ -29,6 +29,8 @@ void multMatMat(MatRow A, MatRow B, int n, MatRow C);
 
 void MatVet_Otim (MatRow mat, Vetor v, int m, int n, Vetor res);
 void MatMat_Otim (MatRow A, MatRow B, int n, MatRow C);
+void MatMat_restrict (MatRow  A, MatRow B, int n, MatRow C);
+
 
 void prnMat (MatRow mat, int m, int n);
 void prnVetor (Vetor vet, int n);
